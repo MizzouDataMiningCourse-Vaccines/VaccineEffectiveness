@@ -1,0 +1,31 @@
+--These are the very generic and most likely to change table creation statements
+--From the meeting on April 3, 2014
+
+CREATE TABLE Disease (
+ Disease_id INTEGER AUTO_INCREMENT PRIMARY KEY,
+ name VARCHAR(50), 
+ etc... )
+ 
+ CREATE TABLE Article_Type (
+ ArticleType_id INTEGER AUTO_INCREMENT PRIMARY KEY,
+ type VARCHAR(50),
+ etc... )
+ 
+ CREATE TABLE Article (
+ Article_id INTEGER AUTO_INCREMENT PRIMARY KEY,
+ type VARCHAR(50),
+ name VARCHAR(50),
+ etc.... )
+ 
+ CREATE TABLE Disease_in_Article (
+ Disease_id,
+ Article_id )
+ 
+ CREATE TABLE Term (
+ Term_id INTEGER AUTO_INCREMENT PRIMARY KEY,
+ -- "is-a" hierarchy, etc.... )
+ 
+ CREATE TABLE Terms_in_Article (
+  Term_id INTEGER,
+  Article_id INTEGER,
+  count INTEGER  )
