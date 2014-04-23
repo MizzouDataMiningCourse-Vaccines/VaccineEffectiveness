@@ -8,11 +8,8 @@ import csv
 
 import sys
 
-def main(directory,columns):
-  data = {}
-  for colname in columns:
-    data[colname] = []
-    
+def main(directory,name,columns):
+  data = []
   for root, dirs, files in os.walk(directory):
     for name in files:
       if "csv" in name and "PRJ" in name:
@@ -24,21 +21,22 @@ def main(directory,columns):
         for colname in columns:
           mapper[colname] = header.index(colname)
         for line in reader:
-          for colname,index in mapper.items():
-            item = line[index]
-            if item not in data[colname]:
-              data[colname].append(item)
+          thisline = []
+          for colname in columns:
+            thisline.append(line[mapper[colname]])
+          data.append(thisline)
         fp.close()
   print("Saving to files")
-  for key,array in data.items():
-    fp = open("%s.unique.csv" % (key),'w')
-    for item in array:
-      fp.write("%s\n" % (item))
-    fp.close()
+  fp = open("%s.csv" % (name),'w')
+  for line in data:
+    line = ','.join(line)
+    fp.write("%s\n" % (line))
+  fp.close()
 
 if "__main__" == __name__:
   parser = argparse.ArgumentParser()
   parser.add_argument("directory")
+  parser.add_argument("name")
   parser.add_argument("columns",type=str,nargs='+')
   args = parser.parse_args()
-  main(args.directory,args.columns)
+  main(args.directory,args.name,args.columns)
