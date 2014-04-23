@@ -1,5 +1,5 @@
 '''
-(c) Us
+(c) Mizzou Data Miners
 '''
 
 import argparse
