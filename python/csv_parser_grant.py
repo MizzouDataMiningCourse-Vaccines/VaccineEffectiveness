@@ -9,7 +9,7 @@ import csv
 import sys
 
 def main(directory,name,columns):
-  data = []
+  fpout = open("../data_csv/%s.csv" % (name),'w')
   for root, dirs, files in os.walk(directory):
     for name in files:
       if "csv" in name and "PRJ" in name:
@@ -23,15 +23,18 @@ def main(directory,name,columns):
         for line in reader:
           thisline = []
           for colname in columns:
-            thisline.append(line[mapper[colname]])
-          data.append(thisline)
+            item = line[mapper[colname]]
+            if item is '':
+              thisline.append('\N')
+            else:
+              # NO QUOTES FOR YOU
+              item = item.replace('"','')
+              item = item.rstrip('\\')
+              thisline.append('"%s"' % (item))
+          thisline = ','.join(thisline)
+          fpout.write("%s\n" % (thisline))
         fp.close()
-  print("Saving to files")
-  fp = open("%s.csv" % (name),'w')
-  for line in data:
-    line = ','.join(line)
-    fp.write("%s\n" % (line))
-  fp.close()
+  fpout.close()
 
 if "__main__" == __name__:
   parser = argparse.ArgumentParser()

@@ -23,16 +23,20 @@ def main(directory,columns):
         header = next(reader)
         for colname in columns:
           mapper[colname] = header.index(colname)
+          #data[colname] = []
         for line in reader:
           for colname,index in mapper.items():
-            item = line[index]
-            if item not in data[colname]:
+            terms = line[index]
+            itemss = terms.split(';')
+            for item in itemss:
               data[colname].append(item)
         fp.close()
+        data[colname] = list(set(data[colname]))
   print("Saving to files")
   for key,array in data.items():
-    fp = open("../docs_csv/%s.unique.csv" % (key),'w')
-    for item in array:
+    fp = open("../data_csv/terms/%s.unique.csv" % (key),'w')
+    uniqueSet = set(array)
+    for item in uniqueSet:
       fp.write("%s\n" % (item))
     fp.close()
 
