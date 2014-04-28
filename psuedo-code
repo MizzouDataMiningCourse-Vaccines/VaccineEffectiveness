@@ -1,0 +1,47 @@
+TABLES to populate:
+Organization
+Grant_Institution
+PI_Grant
+IC
+Funding_IC
+Admin_IC
+
+Psuedo Codes:
+Organization:
+  query database and create hash-map for city, state, and country. Each will map from 'name' => 'id'
+  read grant files line by line, extracting ORG_CITY, ORG_STATE, ORG_COUNTRY, ORG_DISTRICT, ORG_NAME, ORG_ZIPCODE
+  write each field to csv, passing city, state, and country through respective hash-maps
+  
+Grant_Institution
+  query database and create hash-map for Organization and department. Each will map from 'name' => 'id'
+  read grant files line by line, extracting ORG_NAME, ORG_DEPARTMENT, and APPLICATION_ID
+  write each field to csv, passing Organization name and and Department name through respective hash-maps
+  
+PI_Grant
+  read grant files line by line, extracting PI and APPLICATION_ID
+  split PI data on ';'
+    foreach PI write APPLICATION_ID, PI_ID
+    
+IC
+  create variable of type set, call it uniqueIC
+  read grant files line by line, extracting FUNDING_IC and ADMIN_IC
+  add ADMIN_IC to uniqueIC
+  split FUNDING_IC on '\', call it ICF
+    split ICF on ':', grab first part of split string and call it IC
+      add IC to uniqueIC
+  Finally, write each uniqueIC element separated by newline
+  
+Funding_IC
+  query database and create hash-map for IC. Each will map from 'name' => 'id'
+  read grant files line by line, extracting FUNDING_IC and APPLICATION_ID
+  split FUNDING_IC on '\', call it ICF
+    split ICF on ':', grab first part of split string and call it IC. Grap second part of string and call it AMOUNT
+      write APPLICATION_ID, IC, AMOUNT (passing IC through hash-map)
+      
+
+Admin_IC
+  query database and create hash-map for IC. Each will map from 'name' => 'id'
+  read grant files line by line, extracting ADMIN_IC and APPLICATION_ID
+  write APPLICATION_ID, ADMIN_IC (passing IC through hash-map)
+      
+      
