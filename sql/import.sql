@@ -5,6 +5,9 @@ LOAD DATA INFILE '/home/action/workspace/VaccineEffectiveness/data_csv/ORG_CITY.
 LOAD DATA INFILE '/home/action/workspace/VaccineEffectiveness/data_csv/ORG_COUNTRY.unique.csv' INTO TABLE Country (name);
 LOAD DATA INFILE '/home/action/workspace/VaccineEffectiveness/data_csv/ORG_DEPT.unique.csv' INTO TABLE Department (name);
 LOAD DATA INFILE '/home/action/workspace/VaccineEffectiveness/data_csv/terms/PROJECT_TERMS.unique.csv' INTO TABLE Term (name);
+
+LOAD DATA INFILE '/home/action/workspace/VaccineEffectiveness/data_csv/Organization.csv' INTO TABLE Organization FIELDS TERMINATED BY ',' ENCLOSED BY '"' LINES TERMINATED BY '\n' (name,city_id,country_id,state_id,district_id,zip);
+  
 LOAD DATA INFILE '/home/action/workspace/VaccineEffectiveness/data_csv/grants.csv'
   INTO TABLE Grants
   FIELDS TERMINATED BY ',' ENCLOSED BY '"'

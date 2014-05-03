@@ -120,5 +120,4 @@ CREATE TABLE PI_Grant (
 	grant_id INTEGER,
 	pi_id INTEGER,
   PRIMARY KEY (grant_id, pi_id),
-	FOREIGN KEY (grant_id) REFERENCES Grants(grant_id),
-	FOREIGN KEY (pi_id) REFERENCES `PI` (pi_id) ) ENGINE = INNODB;
+	FOREIGN KEY (grant_id) REFERENCES Grants(grant_id)) ENGINE = INNODB;

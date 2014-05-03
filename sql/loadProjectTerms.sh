@@ -1,0 +1,1 @@
+echo "LOAD DATA INFILE '/home/action/workspace/VaccineEffectiveness/data_csv/NONE_PROJECT_TERMS.relation.csv' IGNORE INTO TABLE Grants.Grant_Project_Term  FIELDS TERMINATED BY ',' LINES TERMINATED BY '\n' (grant_id, term_id);" | mysql -u root
