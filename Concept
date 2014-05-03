@@ -1,0 +1,14 @@
+HIGH LEVEL POTENTIAL FINDINGS
+1. Grant language evolution: ( i.e. what terms were the most popular for each year? Which terms are no longer popular?)
+2. Evolving Grant-Institution relationships: (Which universities get the most funding? Is it a power law distribution)
+3. How the # of Grants each year has changed: (increase/decrease at what rate) what about funding rate?
+4. Frequent pattern mining: (association rules across terms for each year and across all years)
+
+VISUALIZATION:
+Network representation of:
+	1. Nodes: Institutions, Links: ICs
+	2. Nodes: PIs, Links: Co-PI relations
+	3. Nodes: ICs, Links: Grants
+	
+Heat Map:
+	1. grant funding by state, city, country, organization, zipcode
