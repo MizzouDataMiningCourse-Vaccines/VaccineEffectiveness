@@ -1,3 +1,5 @@
+#Network: ../PIs_directed.tsv
+#Nodes: 15349	Edges: 29264
 #NodeId	Degree	Closeness	Betweennes	EigenVector	NetworkConstraint	ClusteringCoefficient	PageRank	HubScore	AuthorityScore
 0	7.000000	0.165295	2096.000000	0.000000	0.302359	0.333333	0.000122	0.000000	0.000000
 1	1.000000	0.141932	0.000000	0.000000	1.122449	0.000000	0.000025	0.000000	0.000000

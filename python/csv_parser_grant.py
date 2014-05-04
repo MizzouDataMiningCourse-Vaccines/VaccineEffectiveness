@@ -27,6 +27,7 @@ def main(directory,name,columns):
           thisline = []
           for colname in columns:
             item = line[mapper[colname]]
+            item = item.replace(',','') # Remove commas b/c of HIVE
             thisline.append('%s' % (item))
           thisline.append(str(year))
           thisline = ','.join(thisline)
