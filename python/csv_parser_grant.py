@@ -5,6 +5,7 @@
 import argparse
 import os
 import csv
+import re
 
 import sys
 
@@ -13,6 +14,8 @@ def main(directory,name,columns):
   for root, dirs, files in os.walk(directory):
     for name in files:
       if "csv" in name and "PRJ" in name:
+        year = re.match(r'.*(?P<year>\d{4})(_\d+)?\.csv',name)
+        year = year.group('year')
         print("On file",name)
         fp = open("%s%s" % (root,name),'r')
         reader = csv.reader(fp, delimiter=',', quotechar='"')
@@ -24,13 +27,8 @@ def main(directory,name,columns):
           thisline = []
           for colname in columns:
             item = line[mapper[colname]]
-            if item is '':
-              thisline.append('\N')
-            else:
-              # NO QUOTES FOR YOU
-              item = item.replace('"','')
-              item = item.rstrip('\\')
-              thisline.append('"%s"' % (item))
+            thisline.append('%s' % (item))
+          thisline.append(str(year))
           thisline = ','.join(thisline)
           fpout.write("%s\n" % (thisline))
         fp.close()
