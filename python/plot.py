@@ -55,7 +55,7 @@ def main():
 			if row < cur:
 				tmp.append([row,count])
 				cur = row
-				count += 1
+			count += 1
 		datas.append(tmp)
 
 	datas = np.array(datas)
@@ -78,7 +78,7 @@ def main():
 		subplot.set_xscale('log')
 		subplot.set_yscale('log')
 	plt.savefig("../imgs/%s.png" % (args.output), dpi=96, format='png')
-	plt.show()
+	#plt.show()
 
 
 if __name__ == "__main__":
