@@ -7,7 +7,7 @@ Snap Stanford library
 import argparse
 
 
-fp = open("../data_csv/grants_per_county.csv","r")
+fp = open("../data_csv/grants_per_countycode.tsv","r")
 fp1 = open("../data_json/county_count.json","w")
 county_count = []
 max = 1
